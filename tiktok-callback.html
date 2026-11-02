@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TikTok connected - Kinetic Toon</title><link rel="stylesheet" href="style.css"></head><body><header><nav><a class="brand" href="index.html">Kinetic Toon</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></nav></header><main>
+<h1>TikTok sign-in</h1>
+<p id="msg">Reading the answer from TikTok...</p>
+<p><code id="code" style="word-break:break-all"></code></p>
+<p id="how" hidden>Copy the code above and paste it into <code>tools\social\tiktok.json</code> (field <code>"code"</code>) on the Kinetic Toon computer. It works once and only for a few minutes.</p>
+<script>
+  const q = new URLSearchParams(location.search);
+  const msg = document.getElementById('msg');
+  if (q.get('code')) {
+    msg.textContent = 'TikTok approved the connection. Your one-time code:';
+    document.getElementById('code').textContent = q.get('code');
+    document.getElementById('how').hidden = false;
+  } else if (q.get('error')) {
+    msg.textContent = 'TikTok returned an error: ' + q.get('error') + ' ' + (q.get('error_description') || '');
+  } else {
+    msg.textContent = 'This page receives the TikTok sign-in answer for the Kinetic Toon publishing tool.';
+  }
+</script>
+</main><footer>Kinetic Toon &middot; <a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Service</a> &middot; Contact: <a href="mailto:toonkinetic@gmail.com">toonkinetic@gmail.com</a></footer></body></html>
